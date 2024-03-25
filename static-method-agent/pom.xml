@@ -42,7 +42,7 @@
                     <archive>
                         <manifestEntries>
                             <!-- 指定preMain方法所在的类 -->
-                            <Premain-Class>com.ryf.bytebuddy.AgentDemo</Premain-Class>
+                            <Premain-Class>com.ryf.bytebuddy.plugin.mysql.AgentDemo</Premain-Class>
                             <!-- 可以重新定义 -->
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <!-- 可以重新多次转换 -->

@@ -1,4 +1,4 @@
-package com.ryf.bytebuddy;
+package com.ryf.bytebuddy.plugin.springmvc;
 
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.agent.builder.AgentBuilder;

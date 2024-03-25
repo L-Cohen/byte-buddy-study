@@ -1,4 +1,4 @@
-package com.ryf.bytebuddy;
+package com.ryf.bytebuddy.plugin.mysql;
 
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.agent.builder.AgentBuilder;
@@ -39,11 +39,10 @@ public class AgentTransform implements AgentBuilder.Transformer {
         log.info("clazz name to transform:{}", typeDescription.getCanonicalName());
         // bytebuddy 库类基本为不可变的，修改后要返回修改后的对象，否则会导致修改丢失
         return builder.method(
-                        not(isStatic())
-                                .and(
-                                        isAnnotatedWith(nameStartsWith(MAPPING_PKG_PREFIX)
-                                                .and(nameEndsWith(MAPPING_PKG_SUFFIX))))
+                    named("execute")
+                            .or(named("executeQuery"))
+                            .or(named("executeUpdate"))
                 )
-                .intercept(MethodDelegation.to(new SpringMvcInterceptor()));
+                .intercept(MethodDelegation.to(new MysqlExecuteInterceptor()));
     }
 }

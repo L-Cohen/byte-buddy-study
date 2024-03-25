@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ryf.apm.agent</groupId>
+        <artifactId>apm-sniffer</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>apm-plugins</artifactId>
+
+    <packaging>pom</packaging>
+    <modules>
+        <module>springmcv-plugin</module>
+        <module>mysql-plugin</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ryf.apm.agent</groupId>
+            <artifactId>apm-core</artifactId>
+            <version>${project.version}</version>
+            <!-- 只有apm-plugins模块只有编译的时候core模块，运行时不需要，因为core模块已经在运行时已经被apm-agent模块依赖了，不需要重复依赖 -->
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ryf</groupId>
-        <artifactId>bytebuddy-study</artifactId>
+        <artifactId>skywalking-app-demo</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>instance-method-agent</artifactId>
+    <artifactId>mysql-standalone-plugin</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -65,4 +65,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
