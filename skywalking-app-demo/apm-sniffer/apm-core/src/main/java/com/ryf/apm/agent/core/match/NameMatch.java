@@ -10,7 +10,7 @@ import lombok.Getter;
  * @date 2023/11/6
  */
 @Getter
-public class NameMatch implements ClassMatch{
+public class NameMatch implements ClassMatch {
     private final String className;
 
     private NameMatch(String className) {

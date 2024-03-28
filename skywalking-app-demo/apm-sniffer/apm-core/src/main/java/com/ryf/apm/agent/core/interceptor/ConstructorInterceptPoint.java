@@ -18,7 +18,7 @@ public interface ConstructorInterceptPoint {
     ElementMatcher<MethodDescription> getConstructorMatcher();
 
     /**
-     * 获取被增强方法对应的interceptor名称
+     * 获取被增强方法对应的interceptor名称，必须实现ConstructorMethodsAroundInterceptor
      */
     String getMethodsInterceptor();
 }

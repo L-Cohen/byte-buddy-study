@@ -18,7 +18,7 @@ public interface InstanceMethodsInterceptorPoint {
     ElementMatcher<MethodDescription> getMethodsMatcher();
 
     /**
-     * 获取被增强方法对应的interceptor名称
+     * 获取被增强方法对应的interceptor名称，需要实现InstanceMethodsAroundInterceptor
      */
     String getMethodsInterceptor();
 }

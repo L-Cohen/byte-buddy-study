@@ -15,7 +15,7 @@ import static net.bytebuddy.matcher.ElementMatchers.named;
  * @description 多个类名匹配相等的情况
  * @date 2023/11/6
  */
-public class MultiClassNameMatch implements IndirectMatch{
+public class MultiClassNameMatch implements IndirectMatch {
     /**
      * 要匹配的类名称
      */
@@ -39,6 +39,11 @@ public class MultiClassNameMatch implements IndirectMatch{
             }
         }
         return junction;
+    }
+
+    @Override
+    public boolean isMatch(TypeDescription typeDescription) {
+        return matchClassNames.contains(typeDescription.getTypeName());
     }
 
     public static IndirectMatch byMultiClassMatch(String... classNames) {

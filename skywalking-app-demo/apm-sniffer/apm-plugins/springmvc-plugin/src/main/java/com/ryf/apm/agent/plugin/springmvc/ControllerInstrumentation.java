@@ -1,7 +1,7 @@
 package com.ryf.apm.agent.plugin.springmvc;
 
-import com.ryf.apm.agent.core.match.ClassMatch;
 import com.ryf.apm.agent.core.match.ClassAnnotationMatch;
+import com.ryf.apm.agent.core.match.ClassMatch;
 
 /**
  * @author ryf
@@ -10,10 +10,9 @@ import com.ryf.apm.agent.core.match.ClassAnnotationMatch;
  * @description spring-mvc插桩
  * @date 2023/11/6
  */
-public  class RestControllerInstrumentation extends SpringMvcInstrumentation {
-
+public  class ControllerInstrumentation extends SpringMvcInstrumentation {
     @Override
     protected ClassMatch enhanceClass() {
-        return ClassAnnotationMatch.byAnnotation(REST_CONTROLLER_NAME);
+        return ClassAnnotationMatch.byAnnotation(CONTROLLER_NAME);
     }
 }

@@ -17,8 +17,8 @@
     <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/mysql-plugin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/mysql-plugin/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/springmcv-plugin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/springmcv-plugin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/springmvc-plugin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/springmvc-plugin/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/apm-plugins/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/skywalking-app-demo/apm-sniffer/src/main/java" charset="UTF-8" />

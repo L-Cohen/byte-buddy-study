@@ -1,6 +1,6 @@
 package com.ryf.apm.agent.plugin.mysql;
 
-import com.ryf.apm.agent.core.AbstractClassEnhancePluginDefine;
+import com.ryf.apm.agent.core.enhance.ClassEnhancePluginDefine;
 import com.ryf.apm.agent.core.interceptor.ConstructorInterceptPoint;
 import com.ryf.apm.agent.core.interceptor.InstanceMethodsInterceptorPoint;
 import com.ryf.apm.agent.core.interceptor.StaticMethodsInterceptPoint;
@@ -18,7 +18,7 @@ import static net.bytebuddy.matcher.ElementMatchers.named;
  * @description mysql插件定义
  * @date 2023/11/6
  */
-public class MysqlInstrumentation extends AbstractClassEnhancePluginDefine {
+public class MysqlInstrumentation extends ClassEnhancePluginDefine {
 
     public static final String CLIENT_PS_NAME = "com.mysql.cj.jdbc.ClientPreparedStatement";
     public static final String SERVER_PS_NAME = "com.mysql.cj.jdbc.ServerPreparedStatement";

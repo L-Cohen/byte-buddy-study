@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.ryf.apm.agent.plugin</groupId>
-    <artifactId>springmcv-plugin</artifactId>
+    <artifactId>springmvc-plugin</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

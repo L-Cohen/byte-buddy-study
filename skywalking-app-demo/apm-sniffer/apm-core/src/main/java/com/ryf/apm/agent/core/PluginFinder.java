@@ -34,6 +34,7 @@ public class PluginFinder {
 
     /**
      * 对插件进行分类
+     *
      * @param plugins 加载到所有插件
      */
     public PluginFinder(List<AbstractClassEnhancePluginDefine> plugins) {
@@ -75,5 +76,30 @@ public class PluginFinder {
             }
         }
         return junction;
+    }
+
+    /**
+     * 根据匹配到的类获取插件集合
+     *
+     * @param typeDescription 当前匹配到的类
+     * @return typeDescription对应的插件集合
+     */
+    public List<AbstractClassEnhancePluginDefine> find(TypeDescription typeDescription) {
+        List<AbstractClassEnhancePluginDefine> pluginDefines = new LinkedList<>();
+        // 获取全类名
+        String typeName = typeDescription.getTypeName();
+        if (nameMatchDefine.containsKey(typeName)) {
+            // 获取nameMatchDefine插件集合
+            LinkedList<AbstractClassEnhancePluginDefine> list = nameMatchDefine.get(typeName);
+            pluginDefines.addAll(list);
+        }
+        // 处理signatureMatchDefine的集合
+        for (AbstractClassEnhancePluginDefine pluginDefine : signatureMatchDefine) {
+            IndirectMatch indirectMatch = (IndirectMatch) pluginDefine.enhanceClass();
+            if (indirectMatch.isMatch(typeDescription)) {
+                pluginDefines.add(pluginDefine);
+            }
+        }
+        return pluginDefines;
     }
 }
