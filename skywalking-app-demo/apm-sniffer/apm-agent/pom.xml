@@ -71,7 +71,7 @@
                         </goals>
                         <configuration>
                             <target>
-                                <delete dir="${project.basedir}/../../skywalking-app-demo-dist"/>
+                                <delete dir="${project.basedir}/../skywalking-app-demo-dist"/>
                             </target>
                         </configuration>
                     </execution>
@@ -83,9 +83,9 @@
                         </goals>
                         <configuration>
                             <target>
-                                <mkdir dir="${project.basedir}/../../skywalking-app-demo-dist"/>
-                                <copy file="${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar" tofile="${project.basedir}/../../skywalking-app-demo-dist/${project.artifactId}-${project.version}-jar-with-dependencies.jar"  overwrite="true"/>
-                                <mkdir dir="${project.basedir}/../../skywalking-app-demo-dist/plugins"/>
+                                <mkdir dir="${project.basedir}/../skywalking-app-demo-dist"/>
+                                <copy file="${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar" tofile="${project.basedir}/../skywalking-app-demo-dist/${project.artifactId}-${project.version}-jar-with-dependencies.jar"  overwrite="true"/>
+                                <mkdir dir="${project.basedir}/../skywalking-app-demo-dist/plugins"/>
                             </target>
                         </configuration>
                     </execution>

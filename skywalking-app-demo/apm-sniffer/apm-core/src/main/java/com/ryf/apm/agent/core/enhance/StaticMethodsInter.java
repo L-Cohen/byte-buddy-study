@@ -1,5 +1,6 @@
 package com.ryf.apm.agent.core.enhance;
 
+import com.ryf.apm.agent.core.loader.InterceptorInstanceLoader;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
@@ -18,13 +19,14 @@ import java.util.concurrent.Callable;
  */
 @Slf4j
 public class StaticMethodsInter {
-    private  String methodsInterceptor;
-    private  ClassLoader classLoader;
-
     private StaticMethodsAroundInterceptor interceptor;
 
     public StaticMethodsInter(String methodsInterceptor, ClassLoader classLoader) {
-
+        try {
+            interceptor = InterceptorInstanceLoader.load(methodsInterceptor, classLoader);
+        } catch (Exception e) {
+            log.error("can't load interceptor:{}", methodsInterceptor);
+        }
     }
 
     @RuntimeType

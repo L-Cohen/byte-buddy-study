@@ -29,7 +29,12 @@ public class CustomTransformer implements AgentBuilder.Transformer {
     }
 
     @Override
-    public DynamicType.Builder<?> transform(DynamicType.Builder<?> builder, TypeDescription typeDescription, ClassLoader classLoader, JavaModule module, ProtectionDomain protectionDomain) {
+    public DynamicType.Builder<?> transform(DynamicType.Builder<?> builder,
+                                            TypeDescription typeDescription,
+                                            // 加载typeDescription这个类的类加载器（加载被拦截类的类加载器）
+                                            ClassLoader classLoader,
+                                            JavaModule module,
+                                            ProtectionDomain protectionDomain) {
         List<AbstractClassEnhancePluginDefine> plugins = pluginFinder.find(typeDescription);
         if (plugins.isEmpty()) {
             log.debug("matched class:{},plugin not found", typeDescription.getActualName());

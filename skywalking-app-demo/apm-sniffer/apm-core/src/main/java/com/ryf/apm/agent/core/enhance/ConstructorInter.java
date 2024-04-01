@@ -1,5 +1,6 @@
 package com.ryf.apm.agent.core.enhance;
 
+import com.ryf.apm.agent.core.loader.InterceptorInstanceLoader;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
@@ -18,14 +19,18 @@ public class ConstructorInter {
 
 
     public ConstructorInter(String methodsInterceptor, ClassLoader classLoader) {
-
+        try {
+            interceptor = InterceptorInstanceLoader.load(methodsInterceptor, classLoader);
+        } catch (Exception e) {
+            log.error("can't load interceptor:{}", methodsInterceptor);
+        }
     }
 
     @RuntimeType
     public void intercept(@This Object targetObject, @AllArguments Object[] allArguments) {
         try {
             EnhancedInstance enhancedInstance = (EnhancedInstance) targetObject;
-            interceptor.onConstruct(targetObject, allArguments);
+            interceptor.onConstruct(enhancedInstance, allArguments);
         } catch (Throwable t) {
             log.error("ConstructorInter failure.", t);
         }

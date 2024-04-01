@@ -1,13 +1,12 @@
 package com.ryf.apm.agent;
 
-import com.ryf.apm.agent.core.AbstractClassEnhancePluginDefine;
+import com.ryf.apm.agent.core.PluginBootstrap;
 import com.ryf.apm.agent.core.PluginFinder;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.matcher.ElementMatchers;
 
 import java.lang.instrument.Instrumentation;
-import java.util.ServiceLoader;
 
 import static net.bytebuddy.matcher.ElementMatchers.nameContains;
 import static net.bytebuddy.matcher.ElementMatchers.nameStartsWith;
@@ -25,10 +24,7 @@ public class AgentDemo {
     public static void premain(String agentArgs, Instrumentation instrumentation) {
         PluginFinder pluginFinder;
         try {
-            ServiceLoader<AbstractClassEnhancePluginDefine> load = ServiceLoader.load(AbstractClassEnhancePluginDefine.class);
-            for (AbstractClassEnhancePluginDefine pluginDefine : load) {
-            }
-            pluginFinder = new PluginFinder(null);
+            pluginFinder = new PluginFinder(new PluginBootstrap().loadPlugins());
         } catch (Exception e) {
             log.error("init failed", e);
             return;

@@ -1,0 +1,2 @@
+springmvc=com.ryf.apm.agent.plugin.springmvc.RestControllerInstrumentation
+springmvc=com.ryf.apm.agent.plugin.springmvc.ControllerInstrumentation
