@@ -36,8 +36,9 @@ public class CustomTransformer implements AgentBuilder.Transformer {
                                             JavaModule module,
                                             ProtectionDomain protectionDomain) {
         List<AbstractClassEnhancePluginDefine> plugins = pluginFinder.find(typeDescription);
+        log.info("plugins:{}", plugins);
         if (plugins.isEmpty()) {
-            log.debug("matched class:{},plugin not found", typeDescription.getActualName());
+            log.info("matched class:{},plugin not found", typeDescription.getActualName());
             return builder;
         }
         EnhanceContext context = new EnhanceContext();
@@ -49,7 +50,7 @@ public class CustomTransformer implements AgentBuilder.Transformer {
             }
         }
         if (context.isEnhanced()) {
-            log.debug("enhance:{} finish", typeDescription.getActualName());
+            log.info("enhance:{} finish", typeDescription.getActualName());
         }
         return newBuilder;
     }

@@ -25,6 +25,7 @@ public class AgentDemo {
         PluginFinder pluginFinder;
         try {
             pluginFinder = new PluginFinder(new PluginBootstrap().loadPlugins());
+            log.info("load plugin completed");
         } catch (Exception e) {
             log.error("init failed", e);
             return;

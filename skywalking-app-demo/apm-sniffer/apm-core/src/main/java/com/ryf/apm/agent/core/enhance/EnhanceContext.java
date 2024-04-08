@@ -1,5 +1,7 @@
 package com.ryf.apm.agent.core.enhance;
 
+import lombok.Getter;
+
 /**
  * @author ryf
  * @version 1.0
@@ -15,6 +17,7 @@ public class EnhanceContext {
     /**
      * 是否被扩展
      */
+    @Getter
     private boolean objectExtended = false;
 
     public boolean isEnhanced() {
@@ -23,10 +26,6 @@ public class EnhanceContext {
 
     public void initializationStageCompleted() {
         this.isEnhanced = true;
-    }
-
-    public boolean isObjectExtended() {
-        return objectExtended;
     }
 
     public void extendObjectCompleted() {

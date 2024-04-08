@@ -57,15 +57,15 @@ public abstract class AbstractClassEnhancePluginDefine {
         // 待增强的类，com.mysql.cj.jdbc.ServerPreparedStatement
         String transformClassName = typeDescription.getTypeName();
         if (StrUtil.isEmpty(transformClassName)) {
-            log.warn("class name of being intercepted is not defined by {}.", interceptorDefineClassName);
+            log.info("class name of being intercepted is not defined by {}.", interceptorDefineClassName);
             return null;
         }
 
-        log.debug("prepare to enhance class {} by {}.", transformClassName, interceptorDefineClassName);
+        log.info("prepare to enhance class {} by {}.", transformClassName, interceptorDefineClassName);
         DynamicType.Builder<?> newClassBuilder = this.enhance(typeDescription, builder, classLoader, context);
         // 增强完成
         context.initializationStageCompleted();
-        log.debug("enhance class {} by {} completely.", transformClassName, interceptorDefineClassName);
+        log.info("enhance class {} by {} completely.", transformClassName, interceptorDefineClassName);
         return newClassBuilder;
     }
 

@@ -35,10 +35,10 @@ public class AgentClassLoader extends ClassLoader {
     /**
      * 自定义类加载器的加载路径
      */
-    private List<File> classpath;
+    private final List<File> classpath;
 
     private List<Jar> allJars;
-    private ReentrantLock jarScanLock = new ReentrantLock();
+    private final ReentrantLock jarScanLock = new ReentrantLock();
     private static final String JAR_URL_PREFIX = "jar:file:";
 
     public AgentClassLoader(ClassLoader parent) {

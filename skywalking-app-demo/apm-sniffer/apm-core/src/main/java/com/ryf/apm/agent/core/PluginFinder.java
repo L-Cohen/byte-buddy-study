@@ -1,8 +1,10 @@
 package com.ryf.apm.agent.core;
 
+import cn.hutool.core.collection.CollUtil;
 import com.ryf.apm.agent.core.match.ClassMatch;
 import com.ryf.apm.agent.core.match.IndirectMatch;
 import com.ryf.apm.agent.core.match.NameMatch;
+import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.description.NamedElement;
 import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.matcher.ElementMatcher;
@@ -19,6 +21,7 @@ import static net.bytebuddy.matcher.ElementMatchers.not;
  * @description 插件查找器，spi机制
  * @date 2023/11/6
  */
+@Slf4j
 public class PluginFinder {
 
     /**
@@ -43,15 +46,20 @@ public class PluginFinder {
             if (classMatch == null) {
                 continue;
             }
-
             if (classMatch instanceof NameMatch) {
                 NameMatch nameMatch = (NameMatch) classMatch;
-                LinkedList<AbstractClassEnhancePluginDefine> list = nameMatchDefine.computeIfAbsent(nameMatch.getClassName(), key -> new LinkedList<>());
-                list.add(plugin);
+                LinkedList<AbstractClassEnhancePluginDefine> pluginDefines = nameMatchDefine.get(nameMatch.getClassName());
+                if (CollUtil.isEmpty(pluginDefines)) {
+                    pluginDefines = new LinkedList<>();
+                    nameMatchDefine.put(nameMatch.getClassName(), pluginDefines);
+                }
+                pluginDefines.add(plugin);
             } else {
                 signatureMatchDefine.add(plugin);
             }
         }
+        nameMatchDefine.forEach((k,v) -> log.info("plugin, key:{}, value:{}", k, v));
+        signatureMatchDefine.forEach(plugin -> log.info("plugin:{}", Arrays.toString(plugin.getInstanceMethodsInterceptorPoints())));
     }
 
 

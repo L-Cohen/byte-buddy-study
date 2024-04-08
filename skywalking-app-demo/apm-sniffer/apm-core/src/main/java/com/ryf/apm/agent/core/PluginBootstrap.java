@@ -43,10 +43,12 @@ public class PluginBootstrap {
             }
             List<PluginDefine> pluginClassList = PluginCfg.INSTANCE.getPluginClassList();
 
+
             // 通过全类名反射获取对象，这个对象就是插件定义对象
             for (PluginDefine pluginDefine : pluginClassList) {
                 // 使用自定义的classloader
                 try {
+                    log.info("plugin name:{}, class name:{}", pluginDefine.getName(), pluginDefine.getDefineClass());
                     Class<?> pluginDefineClass = Class.forName(pluginDefine.getDefineClass(), Boolean.TRUE, AgentClassLoader.getDefaultLoader());
                     AbstractClassEnhancePluginDefine plugin = (AbstractClassEnhancePluginDefine) pluginDefineClass.newInstance();
                     plugins.add(plugin);
